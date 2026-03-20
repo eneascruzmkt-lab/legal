@@ -78,4 +78,6 @@ require __DIR__.'/auth.php';
 
 // Public menu routes — MUST be LAST
 Route::get('/{slug}', [PublicMenuController::class, 'show'])->name('public.menu');
-Route::post('/{slug}/track', [PublicMenuController::class, 'trackEvent'])->name('public.track');
+Route::post('/{slug}/track', [PublicMenuController::class, 'trackEvent'])
+    ->middleware('throttle:60,1')
+    ->name('public.track');

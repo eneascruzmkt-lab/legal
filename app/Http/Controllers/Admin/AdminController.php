@@ -12,7 +12,10 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::with(['user', 'user.subscription'])
+        $restaurants = Restaurant::with([
+                'user' => fn ($q) => $q->select('id', 'name'),
+                'user.subscription' => fn ($q) => $q->select('id', 'user_id', 'plan', 'status'),
+            ])
             ->latest()
             ->paginate(20);
 

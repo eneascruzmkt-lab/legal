@@ -23,3 +23,12 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+*.pem
+*.key
+*.p12
+*.crt
+*.csr
+credentials.json
+serviceAccountKey.json
+.env.local
+.env.staging

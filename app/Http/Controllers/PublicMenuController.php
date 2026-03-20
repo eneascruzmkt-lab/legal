@@ -25,7 +25,7 @@ class PublicMenuController extends Controller
         Analytics::create([
             'restaurant_id' => $restaurant->id,
             'event_type' => 'view',
-            'ip' => request()->ip(),
+            'ip' => preg_replace('/\.\d+$/', '.0', request()->ip()),
             'user_agent' => request()->userAgent(),
         ]);
 
@@ -55,7 +55,7 @@ class PublicMenuController extends Controller
             'restaurant_id' => $restaurant->id,
             'menu_item_id' => $validated['menu_item_id'],
             'event_type' => $validated['event_type'],
-            'ip' => request()->ip(),
+            'ip' => preg_replace('/\.\d+$/', '.0', request()->ip()),
             'user_agent' => request()->userAgent(),
         ]);
 
